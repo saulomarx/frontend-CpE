@@ -16,23 +16,26 @@ class Dictionary extends Component {
     this.state = {
       terms: [],
       selectedTerm: null,
+      pesquisador: null,
     };
   }
-  
-  selectTerm(term){
-    this.setState({ selectedTerm: term });
+
+  async selectTerm(term){
+    const pesquisador = await axios.get(`http://localhost:9080/pesquisadores/${term.id}`)
+    .then(res => res.data)
+    .catch(() => []);
+    this.setState({ selectedTerm: pesquisador[0] });
+
+    console.log(pesquisador[0]);
   }
 
   async componentWillMount() {
-    const terms = await axios.get(`http://localhost:9080/pesquisadores/`)
-    .then(res => res.data)
-    .catch(() => []);
+    const terms = [];
     console.log(terms);
     this.setState({ terms });
   }
-
   render() {
-    const { selectedTerm } = this.state;
+    const { selectedTerm, pesquisador } = this.state;
     return (
       <Styles>
         <PageHeader/>
@@ -41,7 +44,7 @@ class Dictionary extends Component {
           selectTerm={term =>this.selectTerm(term)}
           selectedTerm={selectedTerm}
         />
-        <Content selectedTerm={selectedTerm}/>
+        <Content selectedTerm={pesquisador}/>
         <PageFooter/>
       </Styles>
     );

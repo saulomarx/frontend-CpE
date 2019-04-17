@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import qs from 'qs';
 
 const Styles = styled.div`
 
   .left {
-    
+
     border-right: #EDEDED solid 1px;
   }
 
@@ -33,7 +35,7 @@ const Styles = styled.div`
 
   .list {
     overflow-y: auto;
-    height: calc(100vh - 220px);
+    height: calc(100vh - 750px);
     font-family: Lato,sans-serif;
 
   }
@@ -108,15 +110,15 @@ class FilterList extends Component {
   constructor() {
     super();
     this.state = {
-      searchTerm: ''
+      searchTerm: '',
+      terms: []
     };
   }
 
   renderTerms(){
-    const { searchTerm } = this.state;
-    const { terms, selectTerm, selectedTerm } = this.props;
+    const { searchTerm, terms } = this.state;
+    const { selectTerm, selectedTerm } = this.props;
     return terms
-      .filter(term=>term.nome.toLowerCase().indexOf(searchTerm.toLowerCase())>=0)
       .map((term, i) =>
         <div className={selectedTerm && selectedTerm.id === term.id ?'selectedCell':'unselectedCell'} key={term.id} onClick={()=>selectTerm(term)}>
           <div className={selectedTerm && selectedTerm.id === term.id ?'selectedCellContent':'cellContent'} key={term.id}>
@@ -125,8 +127,13 @@ class FilterList extends Component {
         </div>)
   }
 
-  handleChange(event){
+  async handleChange(event){
     this.setState({ searchTerm: event.target.value })
+    const filter = { nome: event.target.value };
+    const terms = event.target.value ? await axios.get(`http://localhost:9080/pesquisadores?${qs.stringify(filter)}`)
+    .then(res => res.data)
+    .catch(() => []): [];
+    this.setState({ terms });
   }
 
   clearSearchField(){

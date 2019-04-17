@@ -63,13 +63,31 @@ const Styles = styled.div`
 export default class Content extends React.Component {
   render() {
     const { selectedTerm } = this.props;
-    const description = selectedTerm ? selectedTerm.description:defaultDescription;
-    const title = selectedTerm?selectedTerm.title:defaultTitle;
+    console.log(selectedTerm);
+    // const cnpq, nome, nome_cit, nacionalidade, uf_nasc, falecido, resumo; ;
+    const description = selectedTerm ? selectedTerm.description: '';
+    const title = selectedTerm ? selectedTerm.title: '';
+    const cnpq = selectedTerm ? selectedTerm.cnpq : '';
+    const nome = selectedTerm ? selectedTerm.nome : '';
+    const nome_cit = selectedTerm ? selectedTerm.nome_cit : '';
+    const nacionalidade = selectedTerm ? selectedTerm.nacionalidade : '';
+    const uf_nasc = selectedTerm ? selectedTerm.uf_nasc : '';
+    const falecido = selectedTerm ? selectedTerm.falecido : '';
+    const resumo = selectedTerm ? selectedTerm.resumo : '';
+    // [{"id","cnpq","nome","nome_cit","nacionalidade","uf_nasc","falecido","resumo"]
     return (
+
       <Styles>
         <div className='conteiner'>
           <div className='title'>{title}</div>
-          <div className='description'> {description} </div>
+          <div className='description'> <b>cnpq:</b> {cnpq} </div>
+          <div className='description'> <b>nome:</b> {nome} </div>
+          <div className='description'> <b>nome_cit:</b> {nome_cit} </div>
+          <div className='description'> <b>nacionalidade:</b> {nacionalidade} </div>
+          <div className='description'> <b>uf_nasc:</b> {uf_nasc} </div>
+          <div className='description'> <b>falecido:</b> {falecido} </div>
+          <div className='description'> <b>resumo:</b> {resumo} </div>
+
           <div className='divisorDiv'>
             <hr className='divisor'/>
           </div>

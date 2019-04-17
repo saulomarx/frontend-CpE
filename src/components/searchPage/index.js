@@ -26,7 +26,6 @@ class Dictionary extends Component {
     .catch(() => []);
     this.setState({ selectedTerm: pesquisador[0] });
 
-    console.log(pesquisador[0]);
   }
 
   async componentWillMount() {
@@ -44,7 +43,7 @@ class Dictionary extends Component {
           selectTerm={term =>this.selectTerm(term)}
           selectedTerm={selectedTerm}
         />
-        <Content selectedTerm={pesquisador}/>
+        <Content selectedTerm={selectedTerm}/>
         <PageFooter/>
       </Styles>
     );

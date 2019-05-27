@@ -6,8 +6,8 @@ const Styles = styled.div`
     padding: 0px 30px;
     display: flex;
     justify-content: space-between;
-    background-color: #1a1a1a;
-    height: 59px;
+    background-color: white;
+    height: 100px;
   }
 
   .header-left, .header-left > div {
@@ -22,9 +22,14 @@ const Styles = styled.div`
 
   .logo {
     width: 140px;
+    height: 100px;
     fill: rgb(128,108,92);
   }
 `;
+
+const batata = styled.div`
+  background:blue;
+`
 
 
 export default class PageHeader extends React.Component {
@@ -42,7 +47,9 @@ export default class PageHeader extends React.Component {
         <header className="header">
           <div className="header-left">
             <div className="logo">
-              LOGO
+                <a href="http://cienciaparaeducacao.org">
+                    <img src="http://www.cienciaparaeducacao.hospedagemdesites.ws/wp-content/uploads/2015/06/rede2.png" alt="Logo: Ciência para Educação"/>
+                </a>
             </div>
           </div>
         </header>

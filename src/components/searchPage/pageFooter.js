@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import 'font-awesome/css/font-awesome.min.css';
+// import 'font-awesome/css/font-awesome.min.css';
+
+// Font Awesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const Styles = styled.div`
   .footer {
-    border-bottom: 2px solid rgb(237, 234, 233);
+    border-bottom: 0px solid rgb(237, 234, 233);
     padding: 0px 30px;
     display: flex;
-    background-color: #CBC5BE;
+    background-color: #272727;
     position: fixed;
     bottom: 0;
     left: 0;

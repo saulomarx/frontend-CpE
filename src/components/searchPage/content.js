@@ -79,20 +79,22 @@ export default class Content extends React.Component {
 
       <Styles>
         <div className='conteiner'>
-          <div className='title'>{title}</div>
-          <div className='description'> <b>cnpq:</b> {cnpq} </div>
-          <div className='description'> <b>nome:</b> {nome} </div>
-          <div className='description'> <b>nome_cit:</b> {nome_cit} </div>
-          <div className='description'> <b>nacionalidade:</b> {nacionalidade} </div>
-          <div className='description'> <b>uf_nasc:</b> {uf_nasc} </div>
-          <div className='description'> <b>falecido:</b> {falecido} </div>
-          <div className='description'> <b>resumo:</b> {resumo} </div>
+          { selectedTerm != null &&
+          <span>
+            <div className='title'>{title}</div>
+            <div className='description'> <b>CNPQ:</b> {cnpq} </div>
+            <div className='description'> <b>None:</b> {nome} </div>
+            <div className='description'> <b>Nome de Citação:</b> {nome_cit} </div>
+            <div className='description'> <b>Nacionalidade:</b> {nacionalidade} </div>
+            <div className='description'> <b>Estado de Nascimento:</b> {uf_nasc} </div>
+            <div className='description'> <b>Falecido:</b> {falecido} </div>
+            <div className='description'> <b>Resumo:</b> {resumo} </div>
 
-          <div className='divisorDiv'>
-            <hr className='divisor'/>
-          </div>
-          <div><img className='image' src={'https://dgn7v532p0g5j.cloudfront.net/unsafe/products/photos/still/MUTRI.DAYO18AR.png.1519386214503.jpeg'}/>
-          </div>
+            <div className='divisorDiv'>
+              <hr className='divisor'/>
+            </div>
+          </span>
+          }
         </div>
       </Styles>
     );

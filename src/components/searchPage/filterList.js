@@ -3,17 +3,26 @@ import styled from 'styled-components';
 import axios from 'axios';
 import qs from 'qs';
 
+// Awesome fonts
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSearch, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSearch, faTimesCircle)
+
 const Styles = styled.div`
 
   .left {
-
     border-right: #EDEDED solid 1px;
+    background-color: #0C5895;
+    // height: 90px
+    // padding: 10px;
   }
 
   .input {
-    width: 85%;
+    width: 90%;
     font-size: 17px;
-    color: #988;
+    color: black;
     background: transparent;
     border: 0;
     padding-left: 10px;
@@ -23,20 +32,30 @@ const Styles = styled.div`
     outline-width: 0;
   }
 
+  .box {
+    border-radius: 4px;
+    padding: 5px;
+    background: #0C5895;
+  }
+
   .filterDiv {
+    width: 80%;
+    float: center;
     background-color: #F3F1F0;
     border-radius: 4px;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 12px;
-    margin-right: 12px;
+    padding: 6px;
+    margin: 0 auto;
+    // top: 50%;
+    // -ms-transform: translateY(16%);
+    // transform: translateY(16%);
   }
+
 
   .list {
     overflow-y: auto;
     height: calc(100vh - 750px);
     font-family: Lato,sans-serif;
+    background-color: #e5e5e5;
 
   }
 
@@ -62,23 +81,23 @@ const Styles = styled.div`
 
   .unselectedCell {
     height: 6vh;
-    color: #AFA297;
+    color: #666;
     background: transparent;
     -webkit-transition: background-color 0.2s ease-out;
     -moz-transition: background-color 0.2s ease-out;
     -o-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
-
   }
 
   .unselectedCell:hover {
-    background-color: rgba(179, 167, 156, 0.21);
+    background-color: #3A9BE4;
+    color: #252424;
   }
 
 
   .selectedCell {
-    color: #FFFFFF;
-    background: #B3A79C;
+    color: white;
+    background: #0D70BC;
   }
 
   .left .filter {
@@ -87,6 +106,7 @@ const Styles = styled.div`
   }
 
   .clear {
+    float: right;
     opacity: 1;
     animation-name: fadeInOpacity;
     animation-iteration-count: 1;
@@ -95,12 +115,12 @@ const Styles = styled.div`
   }
 
   @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 `;
@@ -145,24 +165,30 @@ class FilterList extends Component {
     return (
       <Styles>
         <div className='left'>
-          <div className='filterDiv'>
-            <span><i className="fa fa-search"/></span>
-            <span>
-              <input
-                className='input'
-                type="text"
-                placeholder='Procurar Termo'
-                value={searchTerm}
-                onChange={this.handleChange.bind(this)}
-              />
-            </span>
-            { searchTerm.length > 0 &&
-              <span className="clear" onClick={this.clearSearchField.bind(this)}>
-                <i className="fa fa-times-circle fa-sm"/>
+          <div className="box">
+            <div className='filterDiv'>
+              <span><FontAwesomeIcon icon="search" /></span>
+              <span>
+                <input
+                  className='input'
+                  type="text"
+                  placeholder='Procurar Termo'
+                  value={searchTerm}
+                  onChange={this.handleChange.bind(this)}
+                  />
               </span>
-            }
+              { searchTerm.length > 0 &&
+                <span className="clear" onClick={this.clearSearchField.bind(this)}>
+                  <FontAwesomeIcon icon="times-circle"/>
+                </span>
+              }
+            </div>
           </div>
-          <div className='list'>{this.renderTerms()}</div>
+          { searchTerm.length > 0 &&
+            <span>
+              <div className='list'>{this.renderTerms()}</div>
+            </span>
+          }
         </div>
       </Styles>
     );

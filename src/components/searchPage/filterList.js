@@ -150,15 +150,17 @@ class FilterList extends Component {
   async handleChange(event){
     this.setState({ searchTerm: event.target.value })
     const filter = { nome: event.target.value };
-    const terms = event.target.value ? await axios.get(`http://localhost:9080/pesquisadores?${qs.stringify(filter)}`)
+    const terms = event.target.value ? await axios.get(`http://localhost:9080/pesquisadores/advanced?${qs.stringify(filter)}`)
     .then(res => res.data)
     .catch(() => []): [];
     this.setState({ terms });
   }
 
   clearSearchField(){
+    this.setState({ selectedTerm: null });
     this.setState({ searchTerm: '' })
   }
+
 
   render() {
     const { searchTerm } = this.state;

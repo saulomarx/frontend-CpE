@@ -35,6 +35,11 @@ const Styles = styled.div`
     fill: rgb(255,255,255);
   }
 
+  .logo > a {
+    background: #EEE;
+    border-radius: 4px;
+  }
+
   .iconDiv {
     float: left;
     margin-left: 15px;
@@ -68,7 +73,9 @@ export default class PageFooter extends React.Component {
         <footer className='footer'>
           <div className="footer-left">
             <div className="logo">
-              Logo
+                <a href="https://www.institutoayrtonsenna.org.br" target="_blank">
+                    <img src="https://www.institutoayrtonsenna.org.br/etc/designs/institutoayrtonsenna/clientlib-home/Content/img/random-icons/logo-1.png" alt="Logo: Instituto Ayrton Senna"/>
+                </a>
             </div>
           </div>
           <div className='text'>

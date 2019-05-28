@@ -4,7 +4,11 @@ import styled from 'styled-components';
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faFacebookF, faEnvelope, faPhone)
 
 const Styles = styled.div`
   .footer {
@@ -43,16 +47,33 @@ const Styles = styled.div`
   .iconDiv {
     float: left;
     margin-left: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #0d70bc;
+    transform: translateY(-60%);
+  }
+
+  .iconDiv a  {
+    z-index: 100;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+    color: #EEE;
+    border-radius: 50%;
   }
 
   .text {
     color: white;
     padding-top: 1vh;
     text-align: center;
+    transform: translateY(40%);
     vertical-align: middle;
     padding-top: 1.5%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    }
+  }
 
 
 `;
@@ -79,18 +100,23 @@ export default class PageFooter extends React.Component {
             </div>
           </div>
           <div className='text'>
-            <div>TEXTO</div>
-            <div>Texto </div>
+            <div>Copyright 2019 © Rede CpE. Todos os direitos reservados. </div>
           </div>
           <div className='text'>
             <div className='iconDiv'>
-              Ico
-              </div>
-            <div className='iconDiv'>
-              Ico
+              <a href="https://www.facebook.com/RedeCpE/" target="_blank">
+                <FontAwesomeIcon icon={['fab', 'facebook-f']} />
+              </a>
             </div>
             <div className='iconDiv'>
-              Ico
+              <a href="mailto:contato@cienciaparaeducacao.org">
+                <FontAwesomeIcon icon="envelope" />
+              </a>
+            </div>
+            <div className='iconDiv'>
+              <a href="tel:+552138836000" target="_blank">
+                <FontAwesomeIcon icon="phone" />
+              </a>
             </div>
           </div>
         </footer>

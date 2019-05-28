@@ -102,6 +102,7 @@ const Styles = styled.div`
 
   .clear {
     float: right;
+    text-align: center;
     opacity: 1;
     animation-name: fadeInOpacity;
     animation-iteration-count: 1;

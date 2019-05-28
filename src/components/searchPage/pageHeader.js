@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   .header {
     padding: 0px 30px;
+    margin-left: 30px;
     display: flex;
     justify-content: space-between;
     background-color: white;
@@ -21,16 +22,12 @@ const Styles = styled.div`
   }
 
   .logo {
+    padding-left: auto;
     width: 140px;
     height: 100px;
     fill: rgb(128,108,92);
   }
 `;
-
-const batata = styled.div`
-  background:blue;
-`
-
 
 export default class PageHeader extends React.Component {
 

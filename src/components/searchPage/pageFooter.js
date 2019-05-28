@@ -51,7 +51,7 @@ const Styles = styled.div`
     height: 50px;
     border-radius: 50%;
     background: #0d70bc;
-    transform: translateY(-60%);
+    transform: translateY(-70%);
   }
 
   .iconDiv a  {

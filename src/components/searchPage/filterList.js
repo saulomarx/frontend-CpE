@@ -14,9 +14,7 @@ const Styles = styled.div`
 
   .left {
     border-right: #EDEDED solid 1px;
-    background-color: #0C5895;
-    // height: 90px
-    // padding: 10px;
+    background-color: white;
   }
 
   .input {
@@ -45,18 +43,15 @@ const Styles = styled.div`
     border-radius: 4px;
     padding: 6px;
     margin: 0 auto;
-    // top: 50%;
-    // -ms-transform: translateY(16%);
-    // transform: translateY(16%);
   }
-
 
   .list {
     overflow-y: auto;
     height: calc(100vh - 750px);
     font-family: Lato,sans-serif;
     background-color: #e5e5e5;
-
+    width: 80%;
+    margin: 0 auto;
   }
 
   .cellContent  {
@@ -157,8 +152,11 @@ class FilterList extends Component {
   }
 
   clearSearchField(){
-    this.setState({ selectedTerm: null });
     this.setState({ searchTerm: '' })
+  }
+
+  clearSelected() {
+    this.setState({ selectedTerm: null });
   }
 
 

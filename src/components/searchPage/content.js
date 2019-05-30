@@ -57,8 +57,6 @@ export default class Content extends React.Component {
     const cnpq = selectedTerm ? selectedTerm.cnpq : '';
     const nome = selectedTerm ? selectedTerm.nome : '';
     const nome_cit = selectedTerm ? selectedTerm.nome_cit : '';
-    const nacionalidade = selectedTerm ? selectedTerm.nacionalidade : '';
-    const uf_nasc = selectedTerm ? selectedTerm.uf_nasc : '';
     const resumo = selectedTerm ? selectedTerm.resumo : '';
     // [{"id","cnpq","nome","nome_cit","nacionalidade","uf_nasc","falecido","resumo"]
     return (
@@ -70,8 +68,6 @@ export default class Content extends React.Component {
             <div className='description'> <b>None:</b> {nome} </div>
             <div className='description'> <b>Nome de Citação:</b> {nome_cit} </div>
             <div className='description'> <b>Lattes:</b> <a href={`http://lattes.cnpq.br/${cnpq}`} target="_blank">{cnpq}</a> </div>
-            <div className='description'> <b>Nacionalidade:</b> {nacionalidade} </div>
-            <div className='description'> <b>Estado de Nascimento:</b> {uf_nasc} </div>
             <div className='description'> <b>Resumo:</b> {resumo} </div>
 
             <div className='divisorDiv'>

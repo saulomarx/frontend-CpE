@@ -14,9 +14,7 @@ const Styles = styled.div`
 
   .left {
     border-right: #EDEDED solid 1px;
-    background-color: #0C5895;
-    // height: 90px
-    // padding: 10px;
+    background-color: white;
   }
 
   .input {
@@ -45,18 +43,15 @@ const Styles = styled.div`
     border-radius: 4px;
     padding: 6px;
     margin: 0 auto;
-    // top: 50%;
-    // -ms-transform: translateY(16%);
-    // transform: translateY(16%);
   }
-
 
   .list {
     overflow-y: auto;
     height: calc(100vh - 750px);
     font-family: Lato,sans-serif;
     background-color: #e5e5e5;
-
+    width: 80%;
+    margin: 0 auto;
   }
 
   .cellContent  {
@@ -107,6 +102,7 @@ const Styles = styled.div`
 
   .clear {
     float: right;
+    text-align: center;
     opacity: 1;
     animation-name: fadeInOpacity;
     animation-iteration-count: 1;
@@ -150,7 +146,7 @@ class FilterList extends Component {
   async handleChange(event){
     this.setState({ searchTerm: event.target.value })
     const filter = { nome: event.target.value };
-    const terms = event.target.value ? await axios.get(`http://localhost:9080/pesquisadores?${qs.stringify(filter)}`)
+    const terms = event.target.value ? await axios.get(`http://localhost:9080/pesquisadores/advanced?${qs.stringify(filter)}`)
     .then(res => res.data)
     .catch(() => []): [];
     this.setState({ terms });
@@ -159,6 +155,11 @@ class FilterList extends Component {
   clearSearchField(){
     this.setState({ searchTerm: '' })
   }
+
+  clearSelected() {
+    this.setState({ selectedTerm: null });
+  }
+
 
   render() {
     const { searchTerm } = this.state;

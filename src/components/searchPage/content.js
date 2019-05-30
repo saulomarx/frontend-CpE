@@ -1,18 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const defaultDescription=`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et lectus semper, sagittis augue nec, mollis metus. Phasellus fermentum nunc sed dui congue, quis iaculis dui pulvinar. Curabitur bibendum justo ut nunc porta placerat. Sed vel rhoncus tellus, vel auctor quam. Nunc velit nisi, maximus sed mattis eleifend, suscipit quis purus. Sed ultrices nisi risus, vitae hendrerit justo fermentum eget. Nunc mauris dui, pretium eu urna vitae, accumsan pharetra leo. Fusce non fermentum ipsum, non feugiat massa.
-
-Maecenas eros justo, luctus nec lectus eu, euismod viverra arcu. Sed sagittis iaculis diam. In id mauris sed lectus cursus tempus. Quisque vulputate lacus sit amet erat luctus pharetra. Sed ullamcorper vestibulum ligula sit amet tincidunt. Morbi ultricies imperdiet orci ut pellentesque. Sed gravida mi ac quam fermentum, id feugiat nulla imperdiet. Proin at purus nec enim ornare ultrices. Etiam ultricies, tellus nec vulputate pharetra, nunc dui iaculis neque, vitae convallis elit quam et leo. Quisque neque diam, commodo nec metus sit amet, sagittis pulvinar est. Etiam volutpat laoreet dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-
-Cras ullamcorper, tellus ut molestie tempor, mi ipsum iaculis nulla, nec faucibus lorem risus sed felis. Cras molestie metus eget lorem blandit finibus. Nam mi orci, sagittis et hendrerit feugiat, euismod sit amet nulla. Sed eu interdum metus. Praesent mattis diam justo, vel suscipit leo aliquam quis. Duis at tellus at nibh cursus porttitor id vitae nunc. Phasellus et rutrum ex, vitae porta augue. Suspendisse potenti. Maecenas aliquet congue consectetur.
-
-Quisque placerat posuere tellus, ac auctor odio porta nec. Suspendisse suscipit risus ut varius sollicitudin. Sed ac gravida nulla, in rutrum nibh. Fusce arcu turpis, porttitor sed ultricies vitae, dictum non elit. Nulla in risus gravida, pulvinar metus id, fringilla nunc. Nunc at tortor eu enim tristique hendrerit sit amet non ligula. Proin hendrerit nulla id nunc tristique, a dapibus sem mollis. Suspendisse potenti.
-
-Suspendisse suscipit in leo id malesuada. Curabitur pulvinar lectus id velit sollicitudin molestie. Proin laoreet vel velit ac dapibus. Cras commodo augue vitae imperdiet finibus. Integer auctor vitae est non hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus sed pellentesque tortor, in feugiat felis. Integer accumsan arcu justo, id aliquet leo imperdiet eget. Vivamus aliquam metus nisi, at mattis dui malesuada sit amet. Ut vitae erat eu lectus dictum mattis. In lobortis turpis sodales odio dictum ullamcorper. Integer nec suscipit velit.
-
-`;
-const defaultTitle='Titulo';
 const Styles = styled.div`
     height: calc(100vh - 161px);
     overflow-y: auto;
@@ -66,13 +54,9 @@ export default class Content extends React.Component {
     console.log(selectedTerm);
     // const cnpq, nome, nome_cit, nacionalidade, uf_nasc, falecido, resumo; ;
     const description = selectedTerm ? selectedTerm.description: '';
-    const title = selectedTerm ? selectedTerm.title: '';
     const cnpq = selectedTerm ? selectedTerm.cnpq : '';
     const nome = selectedTerm ? selectedTerm.nome : '';
     const nome_cit = selectedTerm ? selectedTerm.nome_cit : '';
-    const nacionalidade = selectedTerm ? selectedTerm.nacionalidade : '';
-    const uf_nasc = selectedTerm ? selectedTerm.uf_nasc : '';
-    const falecido = selectedTerm ? selectedTerm.falecido : '';
     const resumo = selectedTerm ? selectedTerm.resumo : '';
     // [{"id","cnpq","nome","nome_cit","nacionalidade","uf_nasc","falecido","resumo"]
     return (
@@ -81,13 +65,9 @@ export default class Content extends React.Component {
         <div className='conteiner'>
           { selectedTerm != null &&
           <span>
-            <div className='title'>{title}</div>
-            <div className='description'> <b>CNPQ:</b> {cnpq} </div>
             <div className='description'> <b>None:</b> {nome} </div>
             <div className='description'> <b>Nome de Citação:</b> {nome_cit} </div>
-            <div className='description'> <b>Nacionalidade:</b> {nacionalidade} </div>
-            <div className='description'> <b>Estado de Nascimento:</b> {uf_nasc} </div>
-            <div className='description'> <b>Falecido:</b> {falecido} </div>
+            <div className='description'> <b>Lattes:</b> <a href={`http://lattes.cnpq.br/${cnpq}`} target="_blank">{cnpq}</a> </div>
             <div className='description'> <b>Resumo:</b> {resumo} </div>
 
             <div className='divisorDiv'>
